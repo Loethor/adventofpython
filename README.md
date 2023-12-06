@@ -1,4 +1,6 @@
 # 🎄 Advent of Python 🎄 
+![Tests](https://github.com/Loethor/adventofpython/actions/workflows/tests.yml/badge.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Loethor/0ae8ce4137377b1d87a23e8590a7e726/raw/coverage.json)
 
 ## Overview
 This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python
@@ -12,6 +14,7 @@ The project is structured as follows:
     - **`days/`**: Modules for each day's solution.
     - **`data/`**: Contains the input and the example provided for each problem.
     - **`tests/`**: Test modules corresponding to each day's solution.
+    - **`utils/`**: Utility functions.
 
 ## Installation
 1. Clone this repository.
