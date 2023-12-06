@@ -12,7 +12,7 @@ def run_tests(day=None):
     else:
         suite = loader.discover("./tests", pattern="test_*.py")
 
-    runner = unittest.TextTestRunner()
+    runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
 
     print(f"Ran {result.testsRun} tests in {len(result.failures)} failed, {len(result.errors)} errors")
