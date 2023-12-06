@@ -1,12 +1,7 @@
 import unittest
 from days import day2
 from days.day2 import process_game, process_set, verify_cubes, verify_games, find_minimum_cubes
-
-def naive_parser(file_name: str) -> [str]:
-    with open(file_name, 'r') as file:
-        data = file.read().splitlines()
-    return data
-
+from utils.utils import naive_parser
 
 class InternalFunctions(unittest.TestCase):
     def test_process_game(self):
