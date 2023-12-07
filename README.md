@@ -2,8 +2,6 @@
 
 # Your Repository Name
 
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](ADD-YOUR-TESTS-BADGE-LINK)
-[![Coverage](https://img.shields.io/badge/coverage-xx%25-brightgreen)](ADD-YOUR-COVERAGE-BADGE-LINK)
 
 
 ## Overview

@@ -1,4 +1,4 @@
-name: Python Tests
+name: Tests
 
 on:
   push:
@@ -31,9 +31,9 @@ jobs:
           cd years/2023/
           python -m unittest discover -s tests -p 'test_*.py'
 
-      - name: Generate coverage report
-        run: |
-          cd years/2023/
-          pip install coverage
-          coverage run -m unittest discover -s tests -p 'test_*.py'
-          coverage report -m
+      # - name: Generate coverage report
+      #   run: |
+      #     cd years/2023/
+      #     pip install coverage
+      #     coverage run -m unittest discover -s tests -p 'test_*.py'
+      #     coverage report -m
