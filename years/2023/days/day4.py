@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 def solveA(input_data: [chr]) -> int:
     sum = 0
     for line in input_data:

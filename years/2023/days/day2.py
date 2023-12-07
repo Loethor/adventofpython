@@ -85,14 +85,3 @@ def verify_games(game_dict):
         if all(cubes):
             total_sum += game_id
     return total_sum
-
-def verify_cubes(cubes: List[int]) -> bool:
-    #only 12 red cubes, 13 green cubes, and 14 blue cubes
-    red_cubes = 12
-    green_cubes = 13
-    blue_cubes = 14
-    valid_threshold = [blue_cubes, red_cubes, green_cubes]
-    is_valid = False
-    if all( x <= y for x,y in zip(cubes, valid_threshold)):
-        is_valid = True
-    return is_valid
