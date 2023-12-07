@@ -1,5 +1,11 @@
 # 🎄 Advent of Python 🎄 
 
+# Your Repository Name
+
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](ADD-YOUR-TESTS-BADGE-LINK)
+[![Coverage](https://img.shields.io/badge/coverage-xx%25-brightgreen)](ADD-YOUR-COVERAGE-BADGE-LINK)
+
+
 ## Overview
 This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python
 
@@ -12,6 +18,7 @@ The project is structured as follows:
     - **`days/`**: Modules for each day's solution.
     - **`data/`**: Contains the input and the example provided for each problem.
     - **`tests/`**: Test modules corresponding to each day's solution.
+    - **`utils/`**: Utility functions.
 
 ## Installation
 1. Clone this repository.
