@@ -2,7 +2,7 @@
 
 # Your Repository Name
 
-[![Tests](https://github.com/Loethor/adventofpython/workflows/tests.yml/badge.svg)](https://github.com/Loethor/adventofpython/workflows/tests.yml)
+![Tests](https://github.com/Loethor/adventofpython/workflows/tests.yml/badge.svg)
 
 ## Overview
 This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python
