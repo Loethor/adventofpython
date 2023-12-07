@@ -1,7 +1,4 @@
 # 🎄 Advent of Python 🎄 
-
-# Your Repository Name
-
 ![Tests](https://github.com/Loethor/adventofpython/actions/workflows/tests.yml/badge.svg)
 
 ## Overview
