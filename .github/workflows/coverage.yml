@@ -33,7 +33,7 @@ jobs:
           coverage run --source=days/ --omit=days/__init__.py -m unittest discover -s tests -p 'test_*.py' 
 
       - name: Generate HTML coverage report
-        run: coverage html -d coverage_report
+        run: coverage html -d htmlcov
   
       - name: Upload coverage artifacts
         uses: actions/upload-artifact@v3
