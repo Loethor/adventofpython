@@ -26,6 +26,6 @@ class ExternalFunctions(unittest.TestCase):
     def test_part_2(self):
         # Write test cases based on expected functionality
         input_data = naive_parser("data/day3.txt")
-        expected_output = 0
+        expected_output = 82824352
         
         self.assertEqual(day3.solveB(input_data), expected_output)

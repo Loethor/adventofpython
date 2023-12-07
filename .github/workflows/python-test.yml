@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
@@ -28,10 +28,12 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest discover -s test -p '*_test.py'
+          cd years/2023/
+          python -m unittest discover -s test -p 'test_*.py'
 
       - name: Generate coverage report
         run: |
+          cd years/2023/
           pip install coverage
-          coverage run -m unittest discover -s test -p '*_test.py'
+          coverage run -m unittest discover -s test -p 'test_*.py'
           coverage report -m
