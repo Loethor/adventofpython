@@ -50,6 +50,7 @@ jobs:
       #     publish_dir: ./years/2023/htmlcov/
       - name: "Combine"
         run: |
+          cd years/2023/
           export TOTAL=$(coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1)
           echo "total=$TOTAL" >> $GITHUB_ENV
           echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
