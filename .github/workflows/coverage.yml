@@ -40,5 +40,5 @@ jobs:
       - name: Upload coverage artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: coverage-report
-          path: htmlcov/
+          name: Coverage report
+          path: years/2023/htmlcov/index.html
