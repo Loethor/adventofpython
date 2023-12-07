@@ -35,7 +35,7 @@ jobs:
       - name: Generate HTML coverage report
         run: |
           cd years/2023/
-          coverage html -d htmlcov/
+          coverage html 
   
       - name: Upload coverage artifacts
         uses: actions/upload-artifact@v3
@@ -43,8 +43,26 @@ jobs:
           name: Coverage report
           path: years/2023/htmlcov/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-main@v3
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-main@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./years/2023/htmlcov/
+      - name: "Combine"
+        run: |
+          export TOTAL=$(coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1)
+          echo "total=$TOTAL" >> $GITHUB_ENV
+          echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
+
+      - name: "Make badge"
+        uses: schneegans/dynamic-badges-action@v1.4.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./years/2023/htmlcov/
+          # GIST_TOKEN is a GitHub personal access token with scope "gist".
+          auth: ${{ secrets.GIST_TOKEN }}
+          gistID: 0ae8ce4137377b1d87a23e8590a7e726   # replace with your real Gist id.
+          filename: covbadge.json
+          label: Coverage
+          message: ${{ env.total }}%
+          minColorRange: 50
+          maxColorRange: 90
+          valColorRange: ${{ env.total }}
