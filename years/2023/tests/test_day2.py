@@ -1,13 +1,20 @@
 import unittest
 from days import day2
-from days.day2 import process_game, process_set, verify_cubes, verify_games, find_minimum_cubes
+from days.day2 import (
+    process_game,
+    process_set,
+    verify_cubes,
+    verify_games,
+    find_minimum_cubes,
+)
 from utils.utils import naive_parser
+
 
 class InternalFunctions(unittest.TestCase):
     def test_process_game(self):
         input_data = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
         expected_id = 1
-        expected_sets = [" 3 blue, 4 red", " 1 red, 2 green, 6 blue"," 2 green"]
+        expected_sets = [" 3 blue, 4 red", " 1 red, 2 green, 6 blue", " 2 green"]
         actual_id, actual_sets = process_game(input_data)
         self.assertEqual(expected_id, actual_id)
         self.assertEqual(expected_sets, actual_sets)
@@ -38,7 +45,7 @@ class InternalFunctions(unittest.TestCase):
         game_dict = {
             1: [True, True, True],
             2: [True, True, True],
-            3: [True, True, True]
+            3: [True, True, True],
         }
         expected_games = 6
         self.assertEqual(verify_games(game_dict), expected_games)
@@ -47,7 +54,7 @@ class InternalFunctions(unittest.TestCase):
         game_dict = {
             1: [True, True, True],
             2: [True, False, True],
-            3: [True, True, True]
+            3: [True, True, True],
         }
         expected_games = 4
 
@@ -57,7 +64,7 @@ class InternalFunctions(unittest.TestCase):
         game_dict = {
             1: [True, True, False],
             2: [True, False, True],
-            3: [False, True, True]
+            3: [False, True, True],
         }
         self.assertEqual(verify_games(game_dict), 0)
 
@@ -86,24 +93,24 @@ class ExternalFunctions(unittest.TestCase):
     def test_example_1(self):
         input_data = naive_parser("data/example_day2.txt")
         expected_output = 8
-        
+
         self.assertEqual(day2.solveA(input_data), expected_output)
 
     def test_part_1(self):
         input_data = naive_parser("data/day2.txt")
         expected_output = 2505
-        
+
         self.assertEqual(day2.solveA(input_data), expected_output)
 
     def test_example_2(self):
         # Write test cases based on expected functionality
         input_data = naive_parser("data/example_day2.txt")
         expected_output = 2286
-        
+
         self.assertEqual(day2.solveB(input_data), expected_output)
 
     def test_part_2(self):
         input_data = naive_parser("data/day2.txt")
         expected_output = 70265
-        
+
         self.assertEqual(day2.solveB(input_data), expected_output)

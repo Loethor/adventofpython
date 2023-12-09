@@ -1,8 +1,8 @@
 import argparse
 import unittest
 
+
 def run_tests(day=None):
-    
     loader = unittest.TestLoader()
     suite = unittest.TestSuite()
 
@@ -15,7 +15,10 @@ def run_tests(day=None):
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
 
-    print(f"Ran {result.testsRun} tests in {len(result.failures)} failed, {len(result.errors)} errors")
+    print(
+        f"Ran {result.testsRun} tests in {len(result.failures)} failed, {len(result.errors)} errors"
+    )
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Advent of Code solutions runner")

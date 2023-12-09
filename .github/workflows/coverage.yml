@@ -29,28 +29,6 @@ jobs:
           cd years/2023/
           python -m pip install coverage
           coverage run --branch --source=days/ --omit=days/__init__.py -m unittest discover -s tests -p 'test_*.py' 
-
-      - name: Generate HTML coverage report
-        run: |
-          cd years/2023/
-          coverage html
-  
-      - name: Upload coverage artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Coverage report
-          path: years/2023/htmlcov/
-
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: Coverage report
-      #     path: docs/
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./years/2023/htmlcov
           
       - name: Generate json coverage report
         run: |
