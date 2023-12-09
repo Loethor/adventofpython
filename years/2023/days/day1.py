@@ -1,33 +1,34 @@
 def solveA(input_data: [chr]) -> int:
-    first_number = ''
-    second_number = ''
+    first_number = ""
+    second_number = ""
     sum = 0
     for word in input_data:
         for character in word:
             if character.isnumeric():
-                if first_number == '':
+                if first_number == "":
                     first_number = character
                     second_number = character
                 else:
                     second_number = character
-        sum += int(first_number+second_number)
-        first_number = ''
-        second_number = ''
+        sum += int(first_number + second_number)
+        first_number = ""
+        second_number = ""
     return sum
 
+
 def solveB(input_data: [chr]) -> int:
-    first_number = ''
-    second_number = ''
+    first_number = ""
+    second_number = ""
     word2number = {
-        "one":'1',
-        "two":'2',
-        "three":'3',
-        "four":'4',
-        "five":'5',
-        "six":'6',
-        "seven":'7',
-        "eight":'8',
-        "nine":'9',
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "four": "4",
+        "five": "5",
+        "six": "6",
+        "seven": "7",
+        "eight": "8",
+        "nine": "9",
     }
     sum = 0
     hits = []
@@ -54,5 +55,5 @@ def solveB(input_data: [chr]) -> int:
                 max_index = pair[0]
                 second_number = pair[1]
         hits = []
-        sum += int(first_number+second_number)
+        sum += int(first_number + second_number)
     return sum

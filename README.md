@@ -3,7 +3,7 @@
 ![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Loethor/0ae8ce4137377b1d87a23e8590a7e726/raw/coverage.json)
 
 ## Overview
-This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python
+This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python.
 
 ## Structure
 The project is structured as follows:
@@ -23,6 +23,7 @@ The project is structured as follows:
     - **Windows**: `venv_name\Scripts\activate`
     - **Unix/MacOS**: `source venv_name/bin/activate`
 4. Install dependencies: `pip install -r requirements.txt`.
+5. Run: `pre-commit install` to install the ruff pre commit analyzer.
 
 ## Usage
 - To run a single day's solutions:
