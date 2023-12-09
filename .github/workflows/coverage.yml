@@ -45,7 +45,7 @@ jobs:
           path: years/2023/htmlcov/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-main@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: years/2023/htmlcov/
