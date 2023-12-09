@@ -71,3 +71,5 @@ jobs:
           minColorRange: 50
           maxColorRange: 90
           valColorRange: ${{ env.total }}
+          colorRangeSaturation: 60 
+          colorRangeLightness: 45
