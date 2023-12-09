@@ -6,7 +6,7 @@ from utils.utils import naive_parser
 class ExternalFunctions(unittest.TestCase):
     def test_example_1(self):
         input_data = naive_parser("data/example_day1A.txt")
-        expected_output = 141
+        expected_output = 142
         
         self.assertEqual(day1.solveA(input_data), expected_output)
 
