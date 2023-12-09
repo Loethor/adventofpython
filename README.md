@@ -1,5 +1,6 @@
 # 🎄 Advent of Python 🎄 
 ![Tests](https://github.com/Loethor/adventofpython/actions/workflows/tests.yml/badge.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Loethor/0ae8ce4137377b1d87a23e8590a7e726/raw/coverage.json)
 
 ## Overview
 This project contains solutions to the [Advent of Code](https://adventofcode.com/) challenges solved in Python
