@@ -34,6 +34,7 @@ jobs:
 
       - name: Generate HTML coverage report
         run: |
+          pwd
           cd years/2023/
           coverage html 
   
