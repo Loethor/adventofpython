@@ -31,13 +31,12 @@ jobs:
         run: |
           cd years/2023/
           python -m pip install coverage
-          coverage run --source=days/ --omit=days/__init__.py -m unittest discover -s tests -p 'test_*.py' 
+          coverage run --branch --source=days/ --omit=days/__init__.py -m unittest discover -s tests -p 'test_*.py' 
 
       - name: Generate HTML coverage report
         run: |
           cd years/2023/
           coverage html
-          coverage json
   
       - name: Upload coverage artifacts
         uses: actions/upload-artifact@v3
@@ -45,23 +44,27 @@ jobs:
           name: Coverage report
           path: years/2023/htmlcov/
 
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-main@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./years/2023/htmlcov/
-      - name: "Combine"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-main@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: years/2023/htmlcov/
+          
+      - name: Generate json coverage
         run: |
           cd years/2023/
-          coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1
+          coverage json
+      - name: Generate total coverage
+        run: |
+          cd years/2023/
           export TOTAL=$(coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1)
-          echo "total=$TOTAL"
           echo "total=$TOTAL" >> $GITHUB_ENV
           echo "### Total coverage: ${TOTAL}%" >> $GITHUB_STEP_SUMMARY
 
-      - name: "Make badge"
+      - name: Create badge
         uses: schneegans/dynamic-badges-action@v1.4.0
         with:
+          # from https://nedbatchelder.com/blog/202209/making_a_coverage_badge.html
           # GIST_TOKEN is a GitHub personal access token with scope "gist".
           auth: ${{ secrets.GIST_TOKEN }}
           gistID: 0ae8ce4137377b1d87a23e8590a7e726   # replace with your real Gist id.
