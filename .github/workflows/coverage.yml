@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate HTML coverage report
         run: |
-          cd /years/2023/
+          cd years/2023/
           coverage html
           coverage json
   
@@ -51,7 +51,7 @@ jobs:
       #     publish_dir: ./years/2023/htmlcov/
       - name: "Combine"
         run: |
-          cd /years/2023/
+          cd years/2023/
           coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1
           export TOTAL=$(coverage report | grep -E 'TOTAL' | awk '{print $NF}' | cut -d'%' -f1)
           echo "total=$TOTAL"
