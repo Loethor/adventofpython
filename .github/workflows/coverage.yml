@@ -65,7 +65,7 @@ jobs:
           # GIST_TOKEN is a GitHub personal access token with scope "gist".
           auth: ${{ secrets.GIST_TOKEN }}
           gistID: 0ae8ce4137377b1d87a23e8590a7e726   # replace with your real Gist id.
-          filename: years/2023/coverage.json
+          filename: coverage.json
           label: Coverage
           message: ${{ env.total }}%
           minColorRange: 50
