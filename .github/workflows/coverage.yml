@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          cd /years/2023/
+          cd years/2023/
           python -m pip install coverage
           coverage run --source=days/ --omit=days/__init__.py -m unittest discover -s tests -p 'test_*.py' 
 
