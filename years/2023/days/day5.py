@@ -2,81 +2,93 @@ from typing import List
 
 
 def solveA(input_data: [chr]) -> int:
-    seeds, *map_strings = input_data.split("\n\n")
-    seeds = list(map(int, seeds.split()[1:]))
-    maps = [Rules(map_string) for map_string in map_strings]
-    locations = []
+    seeds = obtain_seeds(input_data)
+    maps = obtain_maps(input_data)
+    r = float("inf")
+
     for seed in seeds:
-        locations.append(get_location(seed, maps))
-    return min(locations)
+        for m in maps:
+            seed = apply_map(seed, m)
+        r = min(r, seed)
+
+    print(r)
+    return r
 
 
 def solveB(input_data: [chr]) -> int:
-    seeds, *map_strings = input_data.split("\n\n")
-    seeds = list(map(int, seeds.split()[1:]))
+    seeds = obtain_seed_ranges(input_data)
+    maps = obtain_maps(input_data)
+    for maps in maps:
+        new_seeds = []
+        while len(seeds) > 0:
+            start, end = seeds.pop()
+            seeds = remap(start, end, new_seeds, maps, seeds)
 
-    ranges_of_seeds: List[RangePair] = []
-    for i in range(0, len(seeds), 2):
-        ranges_of_seeds.append(RangePair(seeds[i], seeds[i] + seeds[i + 1]))
+        seeds = new_seeds
 
-    reverse_maps = [ReverseRules(map_string) for map_string in map_strings]
-
-    sol = None
-    location = 0
-    while sol is None:
-        seed = get_seed(location, reverse_maps)
-        for rng in ranges_of_seeds:
-            if rng.is_value_contained(seed):
-                sol = location
-                break
-        location += 1
-    return sol
+    print(min(seeds)[0])
+    return min(seeds)[0]
 
 
-class Rules:
-    def __init__(self, map_string) -> None:
-        self.rules = []
-        for line in map_string.splitlines()[1:]:
-            dst, src, rng = map(int, line.split())
-            self.rules.append([dst, src, rng])
-
-    def apply_rules(self, key):
-        for dst, src, rng in self.rules:
-            if src <= key < src + rng:
-                return dst + key - src
-        return key
+def obtain_seeds(input_data):
+    seeds = [int(x) for x in input_data[0].replace("seeds: ", "").split(" ")]
+    return seeds
 
 
-class RangePair:
-    def __init__(self, lower, upper):
-        self.lower = lower
-        self.upper = upper
+def obtain_maps(input_data):
+    maps = [
+        [[int(y) for y in x.split(" ")] for x in input_data[i].splitlines()[1::]]
+        for i in range(1, 8)
+    ]
 
-    def is_value_contained(self, value: int) -> bool:
-        return self.lower <= value < self.upper
-
-
-class ReverseRules:
-    def __init__(self, map_string) -> None:
-        self.rules = []
-        for line in map_string.splitlines()[1:]:
-            dst, src, rng = map(int, line.split())
-            self.rules.append([src, dst, rng])
-
-    def apply_rules(self, key):
-        for dst, src, rng in self.rules:
-            if src <= key < src + rng:
-                return dst + key - src
-        return key
+    return maps
 
 
-def get_location(seed, rules: List[Rules]):
-    for rule in rules:
-        seed = rule.apply_rules(seed)
-    return seed
+def apply_map(step: int, maps: List[List[int]]) -> int:
+    for destination_range_start, source_range_start, range_length in maps:
+        if step >= source_range_start and step < source_range_start + range_length:
+            step = destination_range_start + (step - source_range_start)
+            break
+
+    return step
 
 
-def get_seed(location, rules: List[Rules]):
-    for rule in reversed(rules):
-        location = rule.apply_rules(location)
-    return location
+def obtain_seed_ranges(input_data):
+    seed_input = [int(x) for x in input_data[0].replace("seeds: ", "").split(" ")]
+    seeds = [
+        (seed_input[i], seed_input[i] + seed_input[i + 1])
+        for i in range(0, len(seed_input), 2)
+    ]
+    return seeds
+
+
+def remap(
+    start: int,
+    end: int,
+    new_seeds: list[tuple[int]],
+    map: list[int],
+    seeds: list[tuple[int]],
+) -> int:
+    for destination_range_start, source_range_start, range_length in map:
+        overlap_start = max(start, source_range_start)
+        overlap_end = min(end, source_range_start + range_length)
+
+        if overlap_start < overlap_end:
+            new_seeds.append(
+                (
+                    destination_range_start + (overlap_start - source_range_start),
+                    destination_range_start + (overlap_end - source_range_start),
+                )
+            )
+
+            if start < overlap_start:
+                seeds.append((start, overlap_start))
+
+            if overlap_end < end:
+                seeds.append((overlap_end, end))
+
+            break
+    else:
+        new_seeds.append((start, end))
+
+    return seeds
