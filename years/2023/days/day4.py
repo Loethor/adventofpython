@@ -1,3 +1,7 @@
+from utils.utils import timeit
+
+
+@timeit
 def solveA(input_data: [chr]) -> int:
     sum = 0
     for line in input_data:
@@ -15,6 +19,7 @@ def solveA(input_data: [chr]) -> int:
     return sum
 
 
+@timeit
 def solveB(input_data: [chr]) -> int:
     copies = [1] * len(input_data)
     for i, line in enumerate(input_data):

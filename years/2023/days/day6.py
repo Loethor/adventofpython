@@ -1,7 +1,10 @@
 from typing import List
 from functools import reduce
 
+from utils.utils import timeit
 
+
+@timeit
 def solveA(input_data: List[str]) -> int:
     times = parse_input(input_data[0])
     distances = parse_input(input_data[1])
@@ -13,6 +16,7 @@ def solveA(input_data: List[str]) -> int:
     return reduce((lambda x, y: x * y), victories)
 
 
+@timeit
 def solveB(input_data: List[str]) -> int:
     time = parse_input_bad_kerning(input_data[0])
     distance = parse_input_bad_kerning(input_data[1])

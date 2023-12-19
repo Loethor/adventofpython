@@ -1,3 +1,7 @@
+from utils.utils import timeit
+
+
+@timeit
 def solveA(input_data: [chr]) -> int:
     numbers = []
     symbols = []
@@ -40,6 +44,7 @@ def solveA(input_data: [chr]) -> int:
     return sum(sol)
 
 
+@timeit
 def solveB(input_data: [chr]) -> int:
     numbers = []
     symbols = []

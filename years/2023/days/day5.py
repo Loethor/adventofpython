@@ -1,6 +1,8 @@
 from typing import List
+from utils.utils import timeit
 
 
+@timeit
 def solveA(input_data: [chr]) -> int:
     seeds = obtain_seeds(input_data)
     maps = obtain_maps(input_data)
@@ -15,6 +17,7 @@ def solveA(input_data: [chr]) -> int:
     return r
 
 
+@timeit
 def solveB(input_data: [chr]) -> int:
     seeds = obtain_seed_ranges(input_data)
     maps = obtain_maps(input_data)

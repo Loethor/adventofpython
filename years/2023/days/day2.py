@@ -1,7 +1,9 @@
 from typing import List
 from functools import reduce
+from utils.utils import timeit
 
 
+@timeit
 def solveA(input_data: [chr]) -> int:
     games = []
     for line in input_data:
@@ -19,6 +21,7 @@ def solveA(input_data: [chr]) -> int:
     return solution
 
 
+@timeit
 def solveB(input_data: [chr]) -> int:
     games = []
     for line in input_data:
