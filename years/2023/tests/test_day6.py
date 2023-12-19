@@ -2,7 +2,7 @@ import unittest
 from days import day6
 from days.day6 import (
     parse_input,
-    obtain_number_of_victories,
+    calculate_critical_time,
     parse_input_bad_kerning,
 )
 from utils.utils import list_string_parser
@@ -41,15 +41,15 @@ class InternalFunctions(unittest.TestCase):
         expected_times = [7, 15, 30]
         self.assertEqual(expected_times, actual_times)
 
-    def test_obtain_number_of_victories(self):
-        time = 7
-        distance = 9
-        actual_victories = obtain_number_of_victories(time, distance)
-        expected_victories = 4
-        self.assertEqual(actual_victories, expected_victories)
-
     def test_parse_input_bad_kerning(self):
         input_data = "Time:      7  15   30"
         actual_time = parse_input_bad_kerning(input_data)
         expected_time = 71530
         self.assertEqual(expected_time, actual_time)
+
+    def test_critical_time(self):
+        total_time = 10
+        total_distance = 24
+        expected_output = (5, 6)
+        result = calculate_critical_time(total_time, total_distance)
+        self.assertEqual(result, expected_output)
