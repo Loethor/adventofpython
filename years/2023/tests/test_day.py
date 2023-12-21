@@ -6,7 +6,6 @@
 
 # from utils.utils import list_string_parser
 
-# @unittest.skipIf("tests." not in __name__, "External functions skipped during coverage.")
 # class ExternalFunctions(unittest.TestCase):
 #     def test_example_1(self):
 #         input_data = list_string_parser("data/example_dayX.txt")
