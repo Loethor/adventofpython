@@ -4,9 +4,9 @@ from utils.utils import timeit
 
 @timeit
 def solveA(input_data: List[str]) -> int:
-    pass
+    return 0
 
 
 @timeit
 def solveB(input_data: List[str]) -> int:
-    pass
+    return 0

@@ -1,8 +1,9 @@
+from typing import List, Dict
 from utils.utils import timeit
 
 
 @timeit
-def solveA(input_data: [chr]) -> int:
+def solveA(input_data: List[str]) -> int:
     numbers = []
     symbols = []
     start = None
@@ -45,7 +46,7 @@ def solveA(input_data: [chr]) -> int:
 
 
 @timeit
-def solveB(input_data: [chr]) -> int:
+def solveB(input_data: List[str]) -> int:
     numbers = []
     symbols = []
     start = None
@@ -67,7 +68,7 @@ def solveB(input_data: [chr]) -> int:
             numbers.append([j, int(line[start:]), start, len(line) - 1])
             start = None
 
-    sol_dict = {}
+    sol_dict: Dict[int, List[int]] = {}
     for i, symbol in enumerate(symbols):
         for number in numbers:
             y1 = number[0]

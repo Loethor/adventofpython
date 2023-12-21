@@ -1,8 +1,9 @@
+from typing import List
 from utils.utils import timeit
 
 
 @timeit
-def solveA(input_data: [chr]) -> int:
+def solveA(input_data: List[str]) -> int:
     first_number = ""
     second_number = ""
     sum = 0
@@ -21,7 +22,7 @@ def solveA(input_data: [chr]) -> int:
 
 
 @timeit
-def solveB(input_data: [chr]) -> int:
+def solveB(input_data: List[str]) -> int:
     first_number = ""
     second_number = ""
     word2number = {

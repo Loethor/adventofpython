@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 from utils.utils import timeit
 from collections import defaultdict
 
@@ -51,13 +51,13 @@ class Hand:
     def __lt__(self, other: "Hand"):
         return self.compare_with(other) == -1
 
-    def __eq__(self, other: "Hand"):
+    def __eq__(self, other: "Hand"):  # type: ignore[override]
         return self.compare_with(other) == 0
 
     def __gt__(self, other: "Hand"):
         return self.compare_with(other) == 1
 
-    def card_value(self, card: chr):
+    def card_value(self, card: str):
         order = "AKQJT98765432"
         return order.index(card)
 
@@ -65,7 +65,7 @@ class Hand:
         return self.hand_strength()
 
     def hand_strength(self) -> int:
-        counts = defaultdict(int)
+        counts: Dict[str, int] = defaultdict(int)
         for card in self.cards:
             counts[card] += 1
 
@@ -102,12 +102,12 @@ class Hand:
 
 
 class HandWithJoker(Hand):
-    def card_value(self, card: chr):
+    def card_value(self, card: str):
         order = "AKQT98765432J"
         return order.index(card)
 
     def hand_strength(self) -> int:
-        counts = defaultdict(int)
+        counts: Dict[str, int] = defaultdict(int)
         for card in self.cards:
             counts[card] += 1
 

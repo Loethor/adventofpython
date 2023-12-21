@@ -1,12 +1,15 @@
-from typing import List
+from typing import List, Tuple
 from utils.utils import timeit
+
+SeedList = List[Tuple[int, int]]
+Map = List[List[int]]
 
 
 @timeit
-def solveA(input_data: [chr]) -> int:
+def solveA(input_data: List[str]) -> int:
     seeds = obtain_seeds(input_data)
     maps = obtain_maps(input_data)
-    r = float("inf")
+    r = int("inf")
 
     for seed in seeds:
         for m in maps:
@@ -18,11 +21,11 @@ def solveA(input_data: [chr]) -> int:
 
 
 @timeit
-def solveB(input_data: [chr]) -> int:
+def solveB(input_data: List[str]) -> int:
     seeds = obtain_seed_ranges(input_data)
     maps = obtain_maps(input_data)
     for maps in maps:
-        new_seeds = []
+        new_seeds: SeedList = []
         while len(seeds) > 0:
             start, end = seeds.pop()
             seeds = remap(start, end, new_seeds, maps, seeds)
@@ -47,7 +50,7 @@ def obtain_maps(input_data):
     return maps
 
 
-def apply_map(step: int, maps: List[List[int]]) -> int:
+def apply_map(step: int, maps: Map) -> int:
     for destination_range_start, source_range_start, range_length in maps:
         if step >= source_range_start and step < source_range_start + range_length:
             step = destination_range_start + (step - source_range_start)
@@ -68,10 +71,10 @@ def obtain_seed_ranges(input_data):
 def remap(
     start: int,
     end: int,
-    new_seeds: list[tuple[int]],
-    map: list[int],
-    seeds: list[tuple[int]],
-) -> int:
+    new_seeds: SeedList,
+    map: Map,
+    seeds: SeedList,
+) -> SeedList:
     for destination_range_start, source_range_start, range_length in map:
         overlap_start = max(start, source_range_start)
         overlap_end = min(end, source_range_start + range_length)

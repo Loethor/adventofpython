@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Dict, Tuple
 from functools import reduce
 from utils.utils import timeit
 
 
 @timeit
-def solveA(input_data: [chr]) -> int:
+def solveA(input_data: List[str]) -> int:
     games = []
     for line in input_data:
         (id, sets) = process_game(line)
@@ -12,7 +12,7 @@ def solveA(input_data: [chr]) -> int:
             cubes = process_set(set)
             games.append([id, cubes])
 
-    game_dict = {}
+    game_dict: Dict[int, List[bool]] = {}
     for id, cubes in games:
         is_valid = verify_cubes(cubes)
         game_dict.setdefault(id, []).append(is_valid)
@@ -22,7 +22,7 @@ def solveA(input_data: [chr]) -> int:
 
 
 @timeit
-def solveB(input_data: [chr]) -> int:
+def solveB(input_data: List[str]) -> int:
     games = []
     for line in input_data:
         (id, sets) = process_game(line)
@@ -50,7 +50,7 @@ def find_minimum_cubes(games):
     return game_dict
 
 
-def process_game(line: str) -> (int, List[str]):
+def process_game(line: str) -> Tuple[int, List[str]]:
     rounds = line.split(":")
     game_id = rounds[0].split(" ")
     id = int(game_id[1])
