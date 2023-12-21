@@ -9,14 +9,13 @@ Map = List[List[int]]
 def solveA(input_data: List[str]) -> int:
     seeds = obtain_seeds(input_data)
     maps = obtain_maps(input_data)
-    r = int("inf")
+    r = 999999999999999999999999999  # int unbounded in python3 :D
 
     for seed in seeds:
         for m in maps:
             seed = apply_map(seed, m)
         r = min(r, seed)
 
-    print(r)
     return r
 
 
