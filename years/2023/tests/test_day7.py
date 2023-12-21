@@ -1,6 +1,5 @@
 import unittest
-from days import day7
-from days.day7 import obtain_hands, Hand, HandWithJoker
+from days.day7 import solveA, solveB, obtain_hands, Hand, HandWithJoker
 
 from utils.utils import list_string_parser
 
@@ -10,25 +9,25 @@ class ExternalFunctions(unittest.TestCase):
         input_data = list_string_parser("data/example_day7.txt")
         expected_output = 6440
 
-        self.assertEqual(day7.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_part_1(self):
         input_data = list_string_parser("data/day7.txt")
         expected_output = 253954294
 
-        self.assertEqual(day7.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_example_2(self):
         input_data = list_string_parser("data/example_day7.txt")
         expected_output = 5905
 
-        self.assertEqual(day7.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
     def test_part_2(self):
         input_data = list_string_parser("data/day7.txt")
         expected_output = 254837398
 
-        self.assertEqual(day7.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
 
 class InternalFunctions(unittest.TestCase):

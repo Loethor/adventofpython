@@ -1,6 +1,7 @@
 import unittest
-from days import day6
 from days.day6 import (
+    solveA,
+    solveB,
     parse_input,
     calculate_critical_time,
     parse_input_bad_kerning,
@@ -10,28 +11,30 @@ from utils.utils import list_string_parser
 
 class ExternalFunctions(unittest.TestCase):
     def test_example_1(self):
+        print(__name__)
+        print("HERE")
         input_data = list_string_parser("data/example_day6.txt")
         expected_output = 288
 
-        self.assertEqual(day6.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_part_1(self):
         input_data = list_string_parser("data/day6.txt")
         expected_output = 2269432
 
-        self.assertEqual(day6.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_example_2(self):
         input_data = list_string_parser("data/example_day6.txt")
         expected_output = 71503
 
-        self.assertEqual(day6.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
     def test_part_2(self):
         input_data = list_string_parser("data/day6.txt")
         expected_output = 35865985
 
-        self.assertEqual(day6.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
 
 class InternalFunctions(unittest.TestCase):

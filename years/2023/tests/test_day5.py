@@ -1,6 +1,12 @@
 import unittest
-from days import day5
-from days.day5 import obtain_seeds, obtain_maps, obtain_seed_ranges, apply_map
+from days.day5 import (
+    solveA,
+    solveB,
+    obtain_seeds,
+    obtain_maps,
+    obtain_seed_ranges,
+    apply_map,
+)
 from utils.utils import block_parser
 
 
@@ -9,25 +15,25 @@ class ExternalFunctions(unittest.TestCase):
         input_data = block_parser("data/example_day5.txt")
         expected_output = 35
 
-        self.assertEqual(day5.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_part_1(self):
         input_data = block_parser("data/day5.txt")
         expected_output = 313045984
 
-        self.assertEqual(day5.solveA(input_data), expected_output)
+        self.assertEqual(solveA(input_data), expected_output)
 
     def test_example_2(self):
         input_data = block_parser("data/example_day5.txt")
         expected_output = 46
 
-        self.assertEqual(day5.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
     def test_part_2(self):
         input_data = block_parser("data/day5.txt")
         expected_output = 20283860
 
-        self.assertEqual(day5.solveB(input_data), expected_output)
+        self.assertEqual(solveB(input_data), expected_output)
 
 
 class InternalFunctions(unittest.TestCase):

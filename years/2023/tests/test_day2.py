@@ -1,6 +1,7 @@
 import unittest
-from days import day2
 from days.day2 import (
+    solveA,
+    solveB,
     process_game,
     process_set,
     verify_cubes,
@@ -8,6 +9,33 @@ from days.day2 import (
     find_minimum_cubes,
 )
 from utils.utils import list_string_parser
+
+
+class ExternalFunctions(unittest.TestCase):
+    def test_example_1(self):
+        input_data = list_string_parser("data/example_day2.txt")
+        expected_output = 8
+
+        self.assertEqual(solveA(input_data), expected_output)
+
+    def test_part_1(self):
+        input_data = list_string_parser("data/day2.txt")
+        expected_output = 2505
+
+        self.assertEqual(solveA(input_data), expected_output)
+
+    def test_example_2(self):
+        # Write test cases based on expected functionality
+        input_data = list_string_parser("data/example_day2.txt")
+        expected_output = 2286
+
+        self.assertEqual(solveB(input_data), expected_output)
+
+    def test_part_2(self):
+        input_data = list_string_parser("data/day2.txt")
+        expected_output = 70265
+
+        self.assertEqual(solveB(input_data), expected_output)
 
 
 class InternalFunctions(unittest.TestCase):
@@ -87,30 +115,3 @@ class InternalFunctions(unittest.TestCase):
         games = [(1, [10, 15, 20])]
         expected_result = {1: [10, 15, 20]}
         self.assertEqual(find_minimum_cubes(games), expected_result)
-
-
-class ExternalFunctions(unittest.TestCase):
-    def test_example_1(self):
-        input_data = list_string_parser("data/example_day2.txt")
-        expected_output = 8
-
-        self.assertEqual(day2.solveA(input_data), expected_output)
-
-    def test_part_1(self):
-        input_data = list_string_parser("data/day2.txt")
-        expected_output = 2505
-
-        self.assertEqual(day2.solveA(input_data), expected_output)
-
-    def test_example_2(self):
-        # Write test cases based on expected functionality
-        input_data = list_string_parser("data/example_day2.txt")
-        expected_output = 2286
-
-        self.assertEqual(day2.solveB(input_data), expected_output)
-
-    def test_part_2(self):
-        input_data = list_string_parser("data/day2.txt")
-        expected_output = 70265
-
-        self.assertEqual(day2.solveB(input_data), expected_output)
